@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
 
         <p>
-            <Link as="post/first-post" href="post/[id]">
+            <Link as="post/1" href="post/[id]">
                 <a>Visit my first post.</a>
             </Link>
         </p>
