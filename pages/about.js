@@ -1,8 +1,9 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import Header from '../components/Header'
+import Sidebar from '../components/Sidebar'
 
-export default function Home() {
+export default function About(data) {
   return (
     <div className={styles.container}>
       <Head>
@@ -11,17 +12,24 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Header />
+
       <main className={styles.main}>
         <h1 className={styles.title}>
           This is the about page
         </h1>
-
-        <p>
-            <Link as="post/1" href="post/[id]">
-                <a>Visit my first post.</a>
-            </Link>
-        </p>
       </main>
+
+      <Sidebar posts={data} />
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/`)
+  const data = await res.json()
+
+  // Pass data to the page via props
+  return { props: { data } }
 }

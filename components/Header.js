@@ -4,9 +4,13 @@ export default function Header() {
     return (
         <header>
             <h1>Hello World!</h1>
-            <h2>My first Next.js app</h2>
             <nav>
                 <ul>
+                    <li>
+                        <Link href="/">
+                            <a>Home</a>
+                        </Link>
+                    </li>
                     <li>
                         <Link href="/about">
                             <a>About</a>

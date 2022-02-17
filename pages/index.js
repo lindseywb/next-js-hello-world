@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Header from '../components/Header'
+import Sidebar from '../components/Sidebar'
 
-export default function Home() {
+export default function Home(data) {
+
   return (
     <div className={styles.container}>
       <Head>
@@ -15,11 +17,22 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to my first Next.js app
         </h1>
 
         <p>This is the homepage</p>
+        <p>I'm using this to try the fun things I'm learning doing Next.js training.</p>
       </main>
+      <Sidebar posts={data} />
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/`)
+  const data = await res.json()
+
+  // Pass data to the page via props
+  return { props: { data } }
 }
