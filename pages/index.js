@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
 
-export default function Home(data) {
+export default function Home() {
 
   return (
     <div className={styles.container}>
@@ -23,7 +22,6 @@ export default function Home(data) {
         <p>This is the homepage</p>
         <p>I'm using this to try the fun things I'm learning doing Next.js training.</p>
       </main>
-      <Sidebar posts={data} />
     </div>
   )
 }

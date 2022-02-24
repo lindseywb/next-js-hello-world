@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
 
 export default function About(data) {
   return (
@@ -19,17 +18,6 @@ export default function About(data) {
           This is the about page
         </h1>
       </main>
-
-      <Sidebar posts={data} />
     </div>
   )
-}
-
-export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/`)
-  const data = await res.json()
-
-  // Pass data to the page via props
-  return { props: { data } }
 }
