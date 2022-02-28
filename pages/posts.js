@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Link from 'next/link'
 
 export default function Posts({posts}) {
+    console.log({posts})
   return (
     <div className={styles.container}>
       <Head>
@@ -16,7 +17,7 @@ export default function Posts({posts}) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          This is the posts page
+          List of Spells
         </h1>
 
         <div className='postsList'>
@@ -25,7 +26,7 @@ export default function Posts({posts}) {
         {posts.map((post, index) => (
             <li key={index}>
                 <Link as={`/post/${post.id}`} href="post/[id]">
-                    <a>{post.title.rendered}</a>
+                    <a>{post.name}</a>
                 </Link>
             </li>
         ))}
@@ -43,7 +44,7 @@ export default function Posts({posts}) {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const res = await fetch('https://webdevstudios.com/wp-json/wp/v2/posts')
+  const res = await fetch('https://wizard-world-api.herokuapp.com/Spells')
   const posts = await res.json()
 
   // By returning { props: { posts } }, the Blog component

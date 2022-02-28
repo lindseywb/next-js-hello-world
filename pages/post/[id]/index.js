@@ -13,15 +13,11 @@ export default function Post({ post }) {
             <Header />
 
             <main>
-                <h1>
-                    This is the posts page
-                </h1>
-
                 <div className="post">
-                    <h1>{post.title.rendered}</h1>
-                    {post.excerpt.rendered}
+                    <h1>Name: {post.name}</h1>
+                    <h2>Incantation: {post.incantation}</h2>
+                    <p>Effect: {post.effect}</p>
                 </div>
-                <a href={post.link}>Read Full Post</a>
             </main>
         </>
 
@@ -32,7 +28,7 @@ export default function Post({ post }) {
 export async function getStaticPaths() {
 
   // Call an external API endpoint to get posts.
-  const res = await fetch('https://webdevstudios.com/wp-json/wp/v2/posts')
+  const res = await fetch('https://wizard-world-api.herokuapp.com/Spells')
 
   // Turn the response into JSON.
   const posts = await res.json()
@@ -54,7 +50,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
 
   // Query blog post, based on `params.id`, generated from getStaticPaths()
-  const res = await fetch(`https://webdevstudios.com/wp-json/wp/v2/posts/${params.id}`)
+  const res = await fetch(`https://wizard-world-api.herokuapp.com/Spells/${params.id}`)
 
   // Turn the response into JSON.
   const post = await res.json()
